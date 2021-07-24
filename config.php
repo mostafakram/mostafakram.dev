@@ -3,7 +3,7 @@
 use Illuminate\Support\Str;
 
 return [
-    'baseUrl' => '',
+    'baseUrl' => 'http://mostafakram.dev.test',
     'production' => false,
     'siteName' => 'mostafakram',
     'siteDescription' => 'Some articles about web development using laravel or iOS development',

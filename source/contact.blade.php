@@ -7,10 +7,6 @@ description: Get in touch with us
 @section('body')
 <h1>Contact</h1>
 
-<p class="mb-8">
-    Static sites are unable to handle form submissions. However, there are third-party services, like Tighten’s <a href="https://fieldgoal.io" title="FieldGoal">FieldGoal</a>, which can accept the form submission, email you the result, and redirect back to a thank you page.
-</p>
-
 <form action="/contact" class="mb-12">
     <div class="flex flex-wrap mb-6 -mx-3">
         <div class="w-full md:w-1/2 mb-6 md:mb-0 px-3">

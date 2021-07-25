@@ -7,6 +7,10 @@ description: Get in touch with us
 @section('body')
 <h1>Contact</h1>
 
+<p class="mb-8">
+    Find my contact info <a href="https://bio.link/mostafakram">@mostafakram</a> or drop me a message.
+</p>
+
 <form action="/contact" class="mb-12">
     <div class="flex flex-wrap mb-6 -mx-3">
         <div class="w-full md:w-1/2 mb-6 md:mb-0 px-3">

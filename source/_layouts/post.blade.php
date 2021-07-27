@@ -6,7 +6,7 @@
 
 @section('body')
     @if ($page->cover_image)
-        <img src="{{ $page->cover_image }}" alt="{{ $page->title }} cover image" class="mb-2">
+        <img src="{{ $page->cover_image }}" alt="{{ $page->title }} cover image" class="mb-2"/>
     @endif
 
     <h1 class="leading-none mb-2">{{ $page->title }}</h1>
@@ -25,7 +25,14 @@
 
     <div class="border-b border-blue-200 mb-10 pb-4" v-pre>
         @yield('content')
+
+        <p class="text-base bg-blue-200 p-4">
+            Thanks for reading i hope you liked it<br>
+            Drop me a message at <a href="https://bio.link/mostafakram">@mostafakram</a> 👋 and let me know what you think <br>
+            If you found any mistake or issue please report it on <a href="https://github.com/mostafakram/mostafakram.dev">Github</a>
+        </p>
     </div>
+
 
     <nav class="flex justify-between text-sm md:text-base">
         <div>

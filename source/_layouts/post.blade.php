@@ -9,6 +9,13 @@
         <img src="{{ $page->cover_image }}" alt="{{ $page->title }} cover image" class="mb-2"/>
     @endif
 
+    @if($page->credits)
+        <dev class="text-xs text-black-300">
+            {!! $page->credits !!}
+        </dev>
+
+    @endif
+
     <h1 class="leading-none mb-2">{{ $page->title }}</h1>
 
     <p class="text-gray-700 text-xl md:mt-0">{{ $page->author }}  •  {{ date('F j, Y', $page->date) }}</p>

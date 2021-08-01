@@ -14,7 +14,7 @@ Deploying a server side rendering [Nuxt.js](https://nuxtjs.org) app with a Larav
 
 ## The App
 
-We have a Laravel backend app that has explored its apis under `/api/*`. We have Laravel Nova installed for admin panel. And of course a Nuxt.js forntend app.
+We have a Laravel backend app that has explored its apis under `/api/*`. We have Laravel Nova installed for admin panel. And of course a Nuxt.js frontend app.
 
 This article shows deploying Nuxt.js for server side rendering not static generated. Which means that Node.js server is required. From the [docs](https://nuxtjs.org/docs/2.x/concepts/server-side-rendering):
 
@@ -47,7 +47,7 @@ Your Laravel project folder structure will look something like this
 
 ## Configure Nuxt.js
 
-Set the source directory `in nuxt.config.js` to the path of the `client` directory
+Set the source directory in `nuxt.config.js` to the path of the `client` directory
 
 ```javascript
 

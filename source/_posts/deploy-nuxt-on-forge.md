@@ -7,7 +7,7 @@ featured: true
 description: Deploying server side NuxtJS web app powered by Laravel apis backend on Laravel Forge.
 cover_image: /assets/img/muhannad-ajjan-sL2BRR1cuvM-unsplash.jpg
 credits: Photo by <a href="https://isword.me">Muhannad Ajjan</a> on <a href="https://unsplash.com/@isword?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
-categories: [DevOps, Laravel]
+categories: [devops, laravel]
 ---
 
 Deploying a server side rendering [Nuxt.js](https://nuxtjs.org) app with a Laravel api backend on Laravel [Forge](https://forge.laravel.com) was not a straight forward process. So here is what my collegues and I have done.

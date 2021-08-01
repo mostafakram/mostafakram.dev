@@ -1,7 +1,7 @@
 ---
 extends: _layouts.post
 section: content
-title: Deploy NuxtJS with Laravel Backend on Forge
+title: Deploy Nuxt.js with Laravel Backend on Forge
 date: 2021-08-01
 featured: true
 description: Deploying server side NuxtJS web app powered by Laravel apis backend on Laravel Forge.
@@ -14,9 +14,11 @@ Deploying a server side rendering [Nuxt.js](https://nuxtjs.org) app with a Larav
 
 ## The App
 
-We have a Laravel backend app that has explored its apis under `/api/*`. We have Laravel Nova installed for admin panel. And of course a Nuxt.js frontend app.
+We have a Laravel backend app that has explored its apis under `/api/*`, we have Laravel Nova installed for admin panel and of course a Nuxt.js frontend app.
 
-This article shows deploying Nuxt.js for server side rendering not static generated. Which means that Node.js server is required. From the [docs](https://nuxtjs.org/docs/2.x/concepts/server-side-rendering):
+This article shows deploying Nuxt.js for server side rendering not static generated. Which means that Node.js server is required
+
+From the [docs](https://nuxtjs.org/docs/2.x/concepts/server-side-rendering):
 
 > Server-side rendering (SSR), is the ability of an application to contribute by displaying the web-page on the server instead of rendering it in the browser. Server-side sends a fully rendered page to the client; the client's JavaScript bundle takes over which then allows the Vue.js app to hydrate.
 
@@ -43,7 +45,7 @@ Your Laravel project folder structure will look something like this
 
 - The `client` directory is where your Vue.js files
 - `nuxt.config.js` is the configuration file for Nuxt.js
-- `ecosystem.config.js` is your pm2 configuration file (will get back to this again)
+- `ecosystem.config.js` is your PM2 configuration file (will get back to this again)
 
 ## Configure Nuxt.js
 
@@ -62,7 +64,7 @@ export default {
     buildDir: "client/.nuxt"
 }
 ```
-By default, the Nuxt.js development server port is 3000. You can also change the port number from the default port if needed.
+By default, the Nuxt.js development server port is 3000. You can also change the port number from the default port if needed
 
 
 ```javascript
@@ -73,11 +75,11 @@ export default {
 }
 ```
 
-Check out the [docs](https://nuxtjs.org/docs/2.x/features/configuration) for more configurations available for you.
+Check out the [docs](https://nuxtjs.org/docs/2.x/features/configuration) for more configurations available for you
 
 ## Scripts
 
-From the [docs](https://nuxtjs.org/docs/2.x/get-started/commands#using-in-packagejson):
+As mentioned in the [docs](https://nuxtjs.org/docs/2.x/get-started/commands#using-in-packagejson):
 
 > You should have these commands in your package.json:
 
@@ -92,7 +94,7 @@ From the [docs](https://nuxtjs.org/docs/2.x/get-started/commands#using-in-packag
 }
 ```
 
-Lets remove generate as we are not going to use it and one more for production deployment so that `package.json` scripts will be
+Let's remove generate as we are not going to use it and one more for production deployment so that `package.json` scripts will be
 
 ```json
 {
@@ -109,13 +111,13 @@ Lets remove generate as we are not going to use it and one more for production d
 
 ## PM2 
 
-PM2 is a process management to manage node.js on the server. 
+[PM2](https://pm2.keymetrics.io) is a process management to manage node.js on the server
 
 >Deploying using PM2 (Process Manager 2) is a fast and easy solution for hosting your universal Nuxt application on your server
 
 So make sure you have [installed](https://nuxtjs.org/docs/2.x/deployment/deployment-pm2#getting-started) it on the server 
 
-Pm2 is configured using `ecosystem.config.js` 
+PM2 is configured using `ecosystem.config.js` 
 ```javascript
 module.exports = {
     apps: [
@@ -134,8 +136,8 @@ module.exports = {
 This will handle running node on the server and execute the start command. 
 
 - The `name` is the name of your app that will appear for the process. if you have multiple apps on the same server by thus you can distinguish between them
-- The `script` is telling pm2 which script file we need to run, in this case its `nuxt.js` script
-- The `args` tells pm2 what arguments to pass to the defined script, we need it to pass `start` as an argument, so the result would be `./node_modules/nuxt/bin/nuxt.js start`
+- The `script` is telling PM2 which script file we need to run, in this case its `nuxt.js` script
+- The `args` tells PM2 what arguments to pass to the defined script, we need it to pass `start` as an argument, so the result would be `./node_modules/nuxt/bin/nuxt.js start`
 
 Learn more about configuration file [from here](https://pm2.keymetrics.io/docs/usage/application-declaration/)
 
@@ -168,7 +170,7 @@ Remember `npm run prod` from `package.json` will execute
 ```
 nuxt build && pm2 restart ./ecosystem.config.js
 ```
-It will build your app by running`nuxt build` and then restart pm2 by running `pm2 restart ./ecosystem.config.js`
+It will build your app by running`nuxt build` and then restart PM2 by running `pm2 restart ./ecosystem.config.js`
 
 ## Deploy 
 

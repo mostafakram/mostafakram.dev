@@ -16,20 +16,20 @@ Deploying a server side rendering [Nuxt.js](https://nuxtjs.org) app with a Larav
 
 We have a Laravel backend app that has explored its apis under `/api/*`, we have Laravel Nova installed for admin panel and of course a Nuxt.js frontend app.
 
-This article shows deploying Nuxt.js for server side rendering not static generated. Which means that Node.js server is required
+This article shows deploying Nuxt.js for server side rendering not static generated. Which means that Node.js server is required.
 
 From the [docs](https://nuxtjs.org/docs/2.x/concepts/server-side-rendering):
 
 > Server-side rendering (SSR), is the ability of an application to contribute by displaying the web-page on the server instead of rendering it in the browser. Server-side sends a fully rendered page to the client; the client's JavaScript bundle takes over which then allows the Vue.js app to hydrate.
 
 
-If you want to deploy a static generated Nuxt.js app where node is not required check out [Deploying Your Nuxt.js Site To Laravel Forge](https://blog.laravel.com/deploying-your-nuxtjs-site-to-laravel-forge) by James Brooks
+If you want to deploy a static generated Nuxt.js app where node is not required check out [Deploying Your Nuxt.js Site To Laravel Forge](https://blog.laravel.com/deploying-your-nuxtjs-site-to-laravel-forge) by James Brooks.
 
 # The Project
 
 ## The Structure
 
-Your Laravel project folder structure will look something like this
+Your Laravel project folder structure will look something like this:
 
 ```
 -- Your Project
@@ -75,7 +75,7 @@ export default {
 }
 ```
 
-Check out the [docs](https://nuxtjs.org/docs/2.x/features/configuration) for more configurations available for you
+Check out the [docs](https://nuxtjs.org/docs/2.x/features/configuration) for more configurations available.
 
 ## Scripts
 
@@ -94,7 +94,7 @@ As mentioned in the [docs](https://nuxtjs.org/docs/2.x/get-started/commands#usin
 }
 ```
 
-Let's remove generate as we are not going to use it and one more for production deployment so that `package.json` scripts will be
+Let's remove generate as we are not going to use it and one more for production deployment so that `package.json` scripts will be:
 
 ```json
 {
@@ -111,13 +111,13 @@ Let's remove generate as we are not going to use it and one more for production 
 
 ## PM2 
 
-[PM2](https://pm2.keymetrics.io) is a process management to manage node.js on the server
+[PM2](https://pm2.keymetrics.io) is a process management to manage node.js on the server.
 
 >Deploying using PM2 (Process Manager 2) is a fast and easy solution for hosting your universal Nuxt application on your server
 
-So make sure you have [installed](https://nuxtjs.org/docs/2.x/deployment/deployment-pm2#getting-started) it on the server 
+So make sure you have [installed](https://nuxtjs.org/docs/2.x/deployment/deployment-pm2#getting-started) it on the server. 
 
-PM2 is configured using `ecosystem.config.js` 
+PM2 is configured using `ecosystem.config.js`:
 ```javascript
 module.exports = {
     apps: [
@@ -139,13 +139,13 @@ This will handle running node on the server and execute the start command.
 - The `script` is telling PM2 which script file we need to run, in this case its `nuxt.js` script
 - The `args` tells PM2 what arguments to pass to the defined script, we need it to pass `start` as an argument, so the result would be `./node_modules/nuxt/bin/nuxt.js start`
 
-Learn more about configuration file [from here](https://pm2.keymetrics.io/docs/usage/application-declaration/)
+Learn more about configuration file [from here](https://pm2.keymetrics.io/docs/usage/application-declaration/).
 
 ## Configure Nginx on the Server
 
-Update your nginx configuration on Forge as mentioned in the [docs here](https://nuxtjs.org/docs/2.x/deployment/nginx-proxy#nginx-configuration-for-laravel-forge)
+Update your nginx configuration on Forge as mentioned in the [docs here](https://nuxtjs.org/docs/2.x/deployment/nginx-proxy#nginx-configuration-for-laravel-forge).
 
-The issue is if you have done only these, all of your requests to the server will be proxied to `http://127.0.0.1:3000` to the node.js server even your apis and nova routes. But we need to only proxy the frontend routes to `http://127.0.0.1:3000` and keeep others as they are. So lets update our configurations under `Location / { ... }` add
+The issue is if you have done only these, all of your requests to the server will be proxied to `http://127.0.0.1:3000` to the node.js server even your apis and nova routes. But we need to only proxy the frontend routes to `http://127.0.0.1:3000` and keep others as they are. So lets update our configurations under `Location / { ... }` add:
 
 ```bash
 location ~ ^/(api|nova|nova-vendor|nova-api|vendor) {
@@ -154,9 +154,9 @@ location ~ ^/(api|nova|nova-vendor|nova-api|vendor) {
         }
 }
 ```
-This will tel nginx that any route that include api, nova, nova-vendor, nova-api or vendor dont proxy it to `http://127.0.0.1:3000` but send it to `index.php` and let Laravel handle it 
+This will tel nginx that any route that include api, nova, nova-vendor, nova-api or vendor dont proxy it to `http://127.0.0.1:3000` but send it to `index.php` and let Laravel handle it. 
 
-This line `location ~* \.(jpg|jpeg|gif|css|png|js|ico|html|svg)$` assure that all of your assets inclduding nova's that are not frontend related accessed correctly.
+This line `location ~* \.(jpg|jpeg|gif|css|png|js|ico|html|svg)$` assure that all of your assets including nova's that are not frontend related accessed correctly.
 
 ## Deployment script 
 
@@ -166,11 +166,12 @@ Add to your deployment script on Forge
 npm install && npm run prod
 ```
 
-Remember `npm run prod` from `package.json` will execute 
+Remember `npm run prod` from `package.json` will execute
+
 ```
 nuxt build && pm2 restart ./ecosystem.config.js
 ```
-It will build your app by running`nuxt build` and then restart PM2 by running `pm2 restart ./ecosystem.config.js`
+It will build your app by running`nuxt build` and then restart PM2 by running `pm2 restart ./ecosystem.config.js`.
 
 ## Deploy 
 
